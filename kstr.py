@@ -32,7 +32,6 @@ def cli():
                               path_type=pathlib.Path),
               default=pathlib.Path('./working/'))
 def extract(paths, outpath, workpath):
-    # paths = inpath.glob('*.ks')
     trans = []
 
     workpath.mkdir(parents=True, exist_ok=True)
@@ -110,15 +109,15 @@ def extract(paths, outpath, workpath):
                                 path_type=pathlib.Path),
                 default=pathlib.Path('./project/target/trans.txt'))
 @click.option('--outpath',
-                type=click.Path(file_okay=False,
-                                resolve_path=True,
-                                path_type=pathlib.Path),
-                default=pathlib.Path('./patch/'))
+              type=click.Path(file_okay=False,
+                              resolve_path=True,
+                              path_type=pathlib.Path),
+              default=pathlib.Path('./patch/'))
 @click.option('--workpath',
-                type=click.Path(file_okay=False,
-                                resolve_path=True,
-                                path_type=pathlib.Path),
-                default=pathlib.Path('./working/'))
+              type=click.Path(file_okay=False,
+                              resolve_path=True,
+                              path_type=pathlib.Path),
+              default=pathlib.Path('./working/'))
 def insert(inpath, outpath, workpath):
     paths = workpath.glob('*.ks')
     with shelve.open(str(workpath / 'trans.shelf')) as shelf:
